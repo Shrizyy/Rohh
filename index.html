@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>A little something for you, Rohana 💌</title>
+  
+  <!-- Open Graph Meta Tags for WhatsApp, iMessage, Instagram & Social Sharing -->
+  <meta property="og:title" content="A little something for you, Rohana 💌">
+  <meta property="og:description" content="Open this before your big day ✨">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#ff6b9d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Google Fonts: Great Vibes for romantic script headings, Poppins for clean modern body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS RESET & ROMANTIC DESIGN SYSTEM
+       Palette: Blush Pink, Deep Rose, Warm Cream, Gold Accents, Velvet Night Sky
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    :root {
+      --blush-pink: #ffd1dc;
+      --soft-pink: #ffb3c6;
+      --deep-rose: #c9184a;
+      --crimson-rose: #a4133c;
+      --warm-cream: #fff9f2;
+      --cream-light: #fffdf9;
+      --gold-primary: #ffd166;
+      --gold-accent: #f4a261;
+      --gold-glow: rgba(255, 209, 102, 0.45);
+      --rose-glow: rgba(201, 24, 74, 0.45);
+      
+      --font-heading: 'Great Vibes', cursive;
+      --font-subhead: 'Playfair Display', Georgia, serif;
+      --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 215, 230, 0.28);
+      --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 107, 157, 0.2);
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background-color: #08020e;
+      color: var(--warm-cream);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 12%, #260a33 0%, #13041e 40%, #08020e 100%);
+      position: relative;
+    }
+
+    /* Ambient Canvas for twinkling night sky stars & gentle floating hearts */
+    #ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Top Controls (Mute/Unmute Toggle Button) */
+    .top-controls {
+      position: fixed;
+      top: env(safe-area-inset-top, 16px);
+      right: 16px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .audio-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: var(--warm-cream);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .audio-btn:hover, .audio-btn:active {
+      background: rgba(255, 255, 255, 0.22);
+      transform: scale(1.05);
+      border-color: var(--gold-primary);
+    }
+
+    /* ==========================================================================
+       SCENE 1: INTRO OVERLAY
+       ========================================================================== */
+    #intro-scene {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #1b0728 0%, #08020e 95%);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s;
+    }
+
+    #intro-scene.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-envelope {
+      font-size: 64px;
+      margin-bottom: 24px;
+      display: inline-block;
+      animation: floatEnvelope 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 25px rgba(255, 107, 157, 0.7));
+    }
+
+    @keyframes floatEnvelope {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(4deg); }
+    }
+
+    .intro-title {
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 8.5vw, 56px);
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255, 180, 200, 0.75), 0 0 40px var(--rose-glow);
+      line-height: 1.25;
+      margin-bottom: 12px;
+      max-width: 620px;
+    }
+
+    .intro-sub {
+      font-size: clamp(15px, 3.8vw, 17px);
+      color: var(--blush-pink);
+      font-weight: 300;
+      margin-bottom: 38px;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+
+    .glow-btn {
+      background: linear-gradient(135deg, #ff758f 0%, #ff4d6d 50%, #c9184a 100%);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 16px 42px;
+      border-radius: 999px;
+      font-size: 17px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(255, 77, 109, 0.65), 0 8px 24px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transform: rotate(30deg);
+      animation: buttonShine 3s infinite;
+    }
+
+    @keyframes buttonShine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      20%, 100% { transform: translateX(100%) rotate(30deg); }
+    }
+
+    .glow-btn:hover, .glow-btn:active {
+      transform: scale(1.06);
+      box-shadow: 0 0 40px rgba(255, 117, 143, 0.85), 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ==========================================================================
+       SCENE 2 & 3: SLINGSHOT GAME ARENA
+       ========================================================================== */
+    #game-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 560px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .game-header {
+      margin-top: calc(env(safe-area-inset-top, 16px) + 20px);
+      text-align: center;
+      z-index: 20;
+      pointer-events: none;
+      padding: 0 16px;
+    }
+
+    .hint-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 209, 220, 0.32);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 10px 24px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: clamp(13px, 3.5vw, 15px);
+      font-weight: 400;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), 0 0 18px rgba(255, 107, 157, 0.25);
+      animation: pulseHint 2.4s ease-in-out infinite;
+      transition: all 0.4s ease;
+    }
+
+    @keyframes pulseHint {
+      0%, 100% { transform: scale(1); border-color: rgba(255, 209, 220, 0.32); }
+      50% { transform: scale(1.03); border-color: var(--gold-primary); box-shadow: 0 0 25px var(--gold-glow); }
+    }
+
+    /* Slingshot canvas */
+    #game-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 15;
+      touch-action: none; /* Prevents mobile swipe-down reload & browser pan */
+      cursor: crosshair;
+    }
+
+    /* Flash overlay during heart explosion */
+    #flash-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 300;
+      transition: opacity 0.38s ease-out;
+    }
+
+    /* Screen shake container */
+    .screen-shake {
+      animation: shakeAnim 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    @keyframes shakeAnim {
+      10%, 90% { transform: translate3d(-3px, -2px, 0); }
+      20%, 80% { transform: translate3d(4px, 3px, 0); }
+      30%, 50%, 70% { transform: translate3d(-6px, -4px, 0); }
+      40%, 60% { transform: translate3d(6px, 4px, 0); }
+    }
+
+    /* Miss feedback toast */
+    .miss-toast {
+      position: absolute;
+      top: 26%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.85);
+      background: rgba(30, 8, 42, 0.9);
+      border: 1.5px solid var(--gold-primary);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 500;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 22px var(--gold-glow);
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .miss-toast.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* ==========================================================================
+       SCENE 4: THE LOVE LETTER / MESSAGE CARD
+       ========================================================================== */
+    #message-section {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px 40px;
+      z-index: 40;
+    }
+
+    .message-card {
+      width: 100%;
+      max-width: 580px;
+      background: rgba(26, 7, 36, 0.82);
+      border: 1.5px solid rgba(255, 215, 230, 0.35);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-radius: 30px;
+      padding: 42px 32px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 45px rgba(255, 107, 157, 0.28);
+      position: relative;
+      opacity: 0;
+      transform: translateY(40px) scale(0.9);
+      transition: opacity 1.1s cubic-bezier(0.2, 0.9, 0.3, 1), transform 1.1s cubic-bezier(0.2, 0.9, 0.3, 1);
+    }
+
+    .message-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .message-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 12%;
+      right: 12%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), var(--soft-pink), transparent);
+      border-radius: 999px;
+    }
+
+    .card-top-icon {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 0 12px rgba(255, 209, 102, 0.6));
+    }
+
+    .message-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(38px, 9vw, 56px);
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 0 20px rgba(255, 180, 210, 0.85), 0 0 35px var(--rose-glow);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .message-body {
+      font-size: clamp(15.5px, 4vw, 17.5px);
+      line-height: 1.85;
+      color: var(--cream-light);
+      font-weight: 300;
+      white-space: pre-line;
+      margin-bottom: 28px;
+      min-height: 180px;
+      text-align: left;
+    }
+
+    .message-signature {
+      font-family: var(--font-subhead);
+      font-style: italic;
+      font-size: clamp(17px, 4.3vw, 21px);
+      color: var(--gold-primary);
+      text-align: right;
+      letter-spacing: 0.5px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.8s ease;
+    }
+
+    .message-signature.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      vertical-align: middle;
+      background-color: var(--gold-primary);
+      margin-left: 3px;
+      animation: blinkCursor 0.8s infinite;
+    }
+
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Scroll down indicator below message */
+    .scroll-hint {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--blush-pink);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      opacity: 0;
+      transition: opacity 1s ease;
+      cursor: pointer;
+    }
+
+    .scroll-hint.visible {
+      opacity: 0.95;
+    }
+
+    .bounce-arrow {
+      font-size: 22px;
+      animation: bounceDown 1.8s infinite;
+      color: var(--gold-primary);
+    }
+
+    @keyframes bounceDown {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(8px); }
+      60% { transform: translateY(4px); }
+    }
+
+    /* ==========================================================================
+       SCENE 5: EXTRA SURPRISES (BELOW THE MESSAGE)
+       ========================================================================== */
+    .surprises-container {
+      width: 100%;
+      max-width: 600px;
+      padding: 20px 20px 100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 65px;
+      position: relative;
+      z-index: 45;
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(34px, 8vw, 48px);
+      color: #fff;
+      text-shadow: 0 0 18px rgba(255, 180, 210, 0.75);
+      line-height: 1.2;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--blush-pink);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    /* 1. REASONS CARD STACK */
+    .card-deck-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-stack-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      height: 295px;
+      perspective: 1200px;
+      margin: 10px auto 20px;
+    }
+
+    .flip-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .flip-card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      border-radius: 26px;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border: 1.5px solid rgba(255, 215, 230, 0.32);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55), 0 0 30px rgba(255, 117, 143, 0.18);
+    }
+
+    .card-front {
+      background: linear-gradient(145deg, rgba(48, 12, 60, 0.9) 0%, rgba(24, 6, 34, 0.98) 100%);
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .card-stamp {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--deep-rose) 0%, var(--crimson-rose) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 0 22px rgba(201, 24, 74, 0.65);
+      border: 2px dashed rgba(255, 215, 230, 0.65);
+    }
+
+    .card-front-title {
+      font-family: var(--font-subhead);
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .card-front-hint {
+      font-size: 13px;
+      color: var(--gold-primary);
+      font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 6px 18px;
+      border-radius: 999px;
+    }
+
+    .card-back {
+      background: linear-gradient(145deg, rgba(68, 16, 72, 0.94) 0%, rgba(32, 7, 44, 0.98) 100%);
+      transform: rotateY(180deg);
+      border-color: var(--gold-primary);
+    }
+
+    .card-back-number {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-back-content {
+      font-size: clamp(17px, 4.4vw, 20.5px);
+      line-height: 1.55;
+      color: #fff;
+      font-weight: 400;
+      text-align: center;
+      padding: 10px 0;
+      font-family: var(--font-subhead);
+      font-style: italic;
+    }
+
+    .card-back-tap {
+      font-size: 12px;
+      color: var(--blush-pink);
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    .deck-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .deck-nav-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .deck-nav-btn:active {
+      transform: scale(0.92);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .deck-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .deck-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .deck-dot.active {
+      background: var(--gold-primary);
+      width: 22px;
+      border-radius: 999px;
+      box-shadow: 0 0 10px var(--gold-glow);
+    }
+
+    /* 2. LUCKY CHARM SECTION */
+    .lucky-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .lucky-display {
+      width: 100%;
+      max-width: 460px;
+      min-height: 125px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1.5px solid rgba(255, 209, 102, 0.35);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 22px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 209, 102, 0.15);
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .lucky-text {
+      font-size: clamp(17px, 4.4vw, 20.5px);
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.45;
+      font-family: var(--font-subhead);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .lucky-subtext {
+      font-size: 13px;
+      color: var(--gold-primary);
+      margin-top: 8px;
+      font-weight: 400;
+    }
+
+    .charm-btn {
+      background: linear-gradient(135deg, #ffd166 0%, #f4a261 100%);
+      color: #1a0824;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 15px 36px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(255, 209, 102, 0.6), 0 6px 20px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .charm-btn:active {
+      transform: scale(0.94);
+    }
+
+    /* 3. SEND ME A HUG SECTION */
+    .hug-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .heart-hug-btn {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ff758f 0%, #c9184a 70%, #800f2f 100%);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      cursor: pointer;
+      box-shadow: 0 0 35px rgba(255, 117, 143, 0.7), 0 10px 30px rgba(0, 0, 0, 0.5);
+      animation: heartbeatPulse 1.8s ease-in-out infinite;
+      transition: transform 0.15s ease;
+      position: relative;
+    }
+
+    @keyframes heartbeatPulse {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.12); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.15); }
+      70% { transform: scale(1); }
+    }
+
+    .heart-hug-btn:active {
+      transform: scale(0.88) !important;
+      animation: none;
+    }
+
+    .hug-label {
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .hug-counter-pill {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--blush-pink);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 4px 16px;
+      border-radius: 999px;
+    }
+
+    /* Floating hug emojis container */
+    #hug-emoji-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 500;
+      overflow: hidden;
+    }
+
+    .floating-hug-emoji {
+      position: absolute;
+      font-size: 32px;
+      animation: floatHugUp 2.8s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+      pointer-events: none;
+      filter: drop-shadow(0 0 12px rgba(255, 107, 157, 0.55));
+    }
+
+    @keyframes floatHugUp {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.4) rotate(0deg);
+      }
+      15% {
+        opacity: 1;
+        transform: translateY(-40px) scale(1.2) rotate(-8deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-460px) scale(1) rotate(26deg);
+      }
+    }
+
+    /* 4. FOOTER & SIGN-OFF */
+    .final-footer {
+      width: 100%;
+      text-align: center;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .final-quote {
+      font-family: var(--font-heading);
+      font-size: clamp(30px, 7vw, 44px);
+      line-height: 1.35;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255, 209, 102, 0.8), 0 0 32px var(--rose-glow);
+      max-width: 540px;
+    }
+
+    .replay-game-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 209, 220, 0.32);
+      color: var(--blush-pink);
+      padding: 12px 30px;
+      border-radius: 999px;
+      font-size: 14.5px;
+      font-family: var(--font-body);
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .replay-game-btn:hover, .replay-game-btn:active {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+      border-color: var(--gold-primary);
+      transform: scale(1.04);
+    }
+
+    .copyright-note {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.38);
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Starfield & Floating Hearts Canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- Flash Effect during Heart Explosion -->
+  <div id="flash-overlay"></div>
+
+  <!-- Audio Mute/Unmute Toggle Button -->
+  <div class="top-controls">
+    <button class="audio-btn" id="audio-toggle-btn" aria-label="Toggle Sound">
+      <span id="audio-icon">🔊</span>
+      <span id="audio-label">Sound On</span>
+    </button>
+  </div>
+
+  <!-- Container for interactive floating hug emojis -->
+  <div id="hug-emoji-container"></div>
+
+  <!-- ==========================================================================
+       SCENE 1: INTRO MODAL
+       ========================================================================== -->
+  <div id="intro-scene">
+    <div class="intro-envelope">💌</div>
+    <h1 class="intro-title">Hey Rohana...<br>I have something for you 💌</h1>
+    <p class="intro-sub">A special little wish made just for you</p>
+    <button class="glow-btn" id="start-btn">Tap to begin ✨</button>
+  </div>
+
+  <!-- ==========================================================================
+       SCENE 2 & 3: AIM THE LOVE ARROW (CANVAS SLINGSHOT)
+       ========================================================================== -->
+  <section id="game-section">
+    <div class="game-header">
+      <div class="hint-pill" id="hint-text">
+        <span>🏹</span> Pull back the arrow and aim for my heart
+      </div>
+    </div>
+
+    <!-- Canvas where Bow, Arrow, Flight physics & Heart are rendered -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- Miss feedback toast notification -->
+    <div class="miss-toast" id="miss-toast">
+      <span>😘</span> Almost! Try again
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SCENE 4: THE MESSAGE CARD
+       ========================================================================== -->
+  <section id="message-section">
+    <div class="message-card" id="love-card">
+      <div class="card-top-icon">✨</div>
+      <h2 class="message-heading">All the best, Rohana V ✨</h2>
+      <div class="message-body" id="typewriter-text"><span class="typewriter-cursor"></span></div>
+      <div class="message-signature" id="signature-text">— Shriharsha (your Kunni) 💖</div>
+    </div>
+
+    <div class="scroll-hint" id="scroll-hint">
+      <span>Scroll down for your surprises</span>
+      <span class="bounce-arrow">↓</span>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SCENE 5: EXTRA SURPRISES
+       ========================================================================== -->
+  <div class="surprises-container">
+    
+    <!-- Surprise 1: Reasons I believe in you -->
+    <section class="card-deck-section">
+      <div class="section-title-wrap">
+        <h3 class="section-title">Reasons I believe in you</h3>
+        <p class="section-sub">Tap the card or use arrows to flip & read 💌</p>
+      </div>
+
+      <div class="card-stack-wrapper">
+        <div class="flip-card" id="flip-card-element">
+          <!-- Front Face -->
+          <div class="card-face card-front">
+            <div class="card-stamp">💖</div>
+            <div class="card-front-title" id="deck-front-title">Reason #1</div>
+            <div class="card-front-hint">Tap to flip & open ✨</div>
+          </div>
+          <!-- Back Face -->
+          <div class="card-face card-back">
+            <div class="card-back-number">
+              <span id="deck-card-num">REASON 1 OF 5</span>
+              <span>✨</span>
+            </div>
+            <div class="card-back-content" id="deck-reason-content">
+              "You never give up, even when things get hard."
+            </div>
+            <div class="card-back-tap">Tap to flip back ↺</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="deck-controls">
+        <button class="deck-nav-btn" id="deck-prev-btn" aria-label="Previous Reason">←</button>
+        <div class="deck-dots" id="deck-dots-container"></div>
+        <button class="deck-nav-btn" id="deck-next-btn" aria-label="Next Reason">→</button>
+      </div>
+    </section>
+
+    <!-- Surprise 2: Lucky Charm Generator -->
+    <section class="lucky-section">
+      <div class="section-title-wrap">
+        <h3 class="section-title">Your Lucky Charm</h3>
+        <p class="section-sub">Tap whenever you need an extra burst of magic 🍀</p>
+      </div>
+
+      <div class="lucky-display" id="lucky-display-box">
+        <div class="lucky-text" id="lucky-text-content">"Luck is on your side today 🍀"</div>
+        <div class="lucky-subtext" id="lucky-counter-text">Tapped 1 time • Unlimited luck inside</div>
+      </div>
+
+      <button class="charm-btn" id="charm-trigger-btn">
+        <span>🍀</span> Tap for a Blessing
+      </button>
+    </section>
+
+    <!-- Surprise 3: Send Me A Hug -->
+    <section class="hug-section">
+      <div class="section-title-wrap">
+        <h3 class="section-title">Send Me a Hug</h3>
+        <p class="section-sub">Whenever you feel nervous, press this to send me a hug 🤗</p>
+      </div>
+
+      <div class="heart-hug-btn" id="hug-btn" role="button" aria-label="Send a hug">
+        🤗
+      </div>
+      <div class="hug-label" id="hug-feedback-text">Tap the heart to squeeze!</div>
+      <div class="hug-counter-pill" id="hug-counter-pill">Hugs sent: 0 💕</div>
+    </section>
+
+    <!-- Final Romantic Footer Sign-off -->
+    <footer class="final-footer">
+      <p class="final-quote">
+        "Go shine, Rohana.<br>I'll be right here waiting to celebrate you. 💖<br>— Kunni"
+      </p>
+
+      <button class="replay-game-btn" id="replay-btn">
+        <span>🏹</span> Shoot Cupid's Arrow Again
+      </button>
+
+      <div class="copyright-note">Made with all my heart for Rohana V</div>
+    </footer>
+
+  </div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC: SOUNDS, SLINGSHOT CANVAS, ANIMATIONS & INTERACTIONS
+       ========================================================================== */
+    -->
+  <script>
+    /* ==========================================================================
+       CONFIGURATION & STRINGS (EASY TO EDIT FOR PERSONALIZATION)
+       ========================================================================== */
+    const CONFIG = {
+      recipientName: "Rohana",
+      recipientFull: "Rohana V",
+      senderNickname: "Kunni",
+      senderFull: "Shriharsha (your Kunni)",
+      
+      // Scene 4: The Love Letter (typed line by line)
+      letterLines: [
+        "Before you step into today, remember this —",
+        "you don't need luck, you were born with light.",
+        "You are brave, brilliant, and stronger than you know.",
+        "Whatever happens, I'm already so proud of you.",
+        "So take a deep breath, smile that smile I love,",
+        "and go show the world what I see in you every single day.",
+        "I'll be right here, cheering the loudest. 💖"
+      ],
+
+      // Scene 5 Surprise 1: Reasons I believe in you
+      reasons: [
+        "You never give up, even when things get hard.",
+        "You work harder than anyone I know.",
+        "Your smile can fix any bad day — including mine.",
+        "You are smarter than you give yourself credit for.",
+        "You've already made it through so much. This is just one more win."
+      ],
+
+      // Scene 5 Surprise 2: Lucky Charm blessings
+      blessings: [
+        "May every answer come to you easily ✨",
+        "Luck is on your side today 🍀",
+        "You've got this, no doubt about it 💪",
+        "The universe is cheering for you 🌙",
+        "Stay calm, you're more ready than you think 🌸",
+        "Today is your day to shine ☀️",
+        "One deep breath and you'll ace it 💫",
+        "Sending you all my luck and love 💌",
+        "You are unstoppable, Rohana 🔥",
+        "A kiss for good luck 😘"
+      ],
+
+      // Scene 5 Surprise 3: Tender hug responses
+      hugResponses: [
+        "Hug received! Holding you so tight right now 🥰",
+        "Wrapping my arms around you warmly 💕",
+        "You've got this, my love! Deep breath 🌸",
+        "Sending a million kisses your way 😘",
+        "I'm with you in every heartbeat today ✨",
+        "Squeezing you extra tight for courage 🤗"
+      ]
+    };
+
+    /* ==========================================================================
+       WEB AUDIO API SYNTHESIZER (Pure Mathematical Synthesis, Zero Audio Files)
+       ========================================================================== */
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.isMuted = false;
+        this.hasInitialized = false;
+      }
+
+      init() {
+        if (this.hasInitialized) return;
+        try {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) {
+            this.ctx = new AudioContextClass();
+            this.hasInitialized = true;
+          }
+        } catch (e) {
+          console.warn("Web Audio API not supported", e);
+        }
+      }
+
+      ensureContext() {
+        if (!this.ctx) this.init();
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      toggleMute() {
+        this.isMuted = !this.isMuted;
+        return !this.isMuted;
+      }
+
+      // 1. Soft bowstring twang on arrow release
+      playTwang() {
+        if (this.isMuted) return;
+        this.ensureContext();
+        if (!this.ctx) return;
+
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        // Plucked bowstring harmonic
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(240, now);
+        osc.frequency.exponentialRampToValueAtTime(55, now + 0.16);
+
+        gain.gain.setValueAtTime(0.35, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.2);
+      }
+
+      // 2. Whoosh sound as arrow cuts through the air
+      playWhoosh() {
+        if (this.isMuted) return;
+        this.ensureContext();
+        if (!this.ctx) return;
+
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        const filter = this.ctx.createBiquadFilter();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.exponentialRampToValueAtTime(540, now + 0.22);
+        osc.frequency.exponentialRampToValueAtTime(160, now + 0.5);
+
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(650, now);
+
+        gain.gain.setValueAtTime(0.01, now);
+        gain.gain.linearRampToValueAtTime(0.22, now + 0.14);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.52);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.55);
+      }
+
+      // 3. Sparkly ethereal chime sequence when the heart explodes
+      playHeartBlastChime() {
+        if (this.isMuted) return;
+        this.ensureContext();
+        if (!this.ctx) return;
+
+        // Sparkling celestial pentatonic arpeggio (C6, E6, G6, B6, C7, E7, G7)
+        const notes = [1046.50, 1318.51, 1567.98, 1975.53, 2093.00, 2637.02, 3135.96];
+        const now = this.ctx.currentTime;
+
+        notes.forEach((freq, idx) => {
+          const startTime = now + idx * 0.055;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, startTime);
+
+          gain.gain.setValueAtTime(0.001, startTime);
+          gain.gain.linearRampToValueAtTime(0.25, startTime + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, startTime + 1.25);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(startTime);
+          osc.stop(startTime + 1.35);
+        });
+      }
+
+      // 4. Gentle cheerful chime pop for buttons (Lucky charm, Hugs)
+      playCharmPop() {
+        if (this.isMuted) return;
+        this.ensureContext();
+        if (!this.ctx) return;
+
+        const now = this.ctx.currentTime;
+        const freqs = [783.99, 1174.66, 1567.98];
+
+        freqs.forEach((freq, i) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          const startTime = now + i * 0.04;
+
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, startTime);
+
+          gain.gain.setValueAtTime(0.18, startTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.38);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(startTime);
+          osc.stop(startTime + 0.4);
+        });
+      }
+    }
+
+    const sound = new SoundEngine();
+
+    /* ==========================================================================
+       AMBIENT CANVAS: TWINKLING STARS & FLOATING TRANSLUCENT HEARTS
+       ========================================================================== */
+    class AmbientEngine {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        this.ctx = this.canvas.getContext('2d');
+        this.stars = [];
+        this.hearts = [];
+        this.confetti = [];
+        this.isConfettiActive = false;
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+
+        this.init();
+      }
+
+      init() {
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+
+        // Generate twinkling stars
+        const numStars = Math.min(100, Math.floor((this.width * this.height) / 8000));
+        for (let i = 0; i < numStars; i++) {
+          this.stars.push({
+            x: Math.random() * this.width,
+            y: Math.random() * this.height,
+            radius: Math.random() * 1.5 + 0.5,
+            alpha: Math.random() * 0.8 + 0.2,
+            twinkleSpeed: Math.random() * 0.02 + 0.008,
+            color: Math.random() > 0.4 ? '#ffffff' : (Math.random() > 0.5 ? '#ffd1dc' : '#ffd166')
+          });
+        }
+
+        // Generate initial floating background hearts
+        const numHearts = Math.min(22, Math.floor(this.width / 24));
+        for (let i = 0; i < numHearts; i++) {
+          this.hearts.push(this.createHeart(true));
+        }
+
+        this.animate();
+      }
+
+      resize() {
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+      }
+
+      createHeart(randomY = false) {
+        return {
+          x: Math.random() * this.width,
+          y: randomY ? Math.random() * this.height : this.height + 35,
+          size: Math.random() * 14 + 10,
+          speedY: Math.random() * 0.6 + 0.35,
+          swingAmp: Math.random() * 25 + 10,
+          swingSpeed: Math.random() * 0.015 + 0.008,
+          swingOffset: Math.random() * Math.PI * 2,
+          opacity: Math.random() * 0.3 + 0.12,
+          rotation: Math.random() * 0.4 - 0.2,
+          color: Math.random() > 0.5 ? 'rgba(255, 179, 198,' : 'rgba(255, 117, 143,'
+        };
+      }
+
+      startConfetti() {
+        this.isConfettiActive = true;
+        // Seed falling heart confetti & rose petals after heart blast
+        for (let i = 0; i < 45; i++) {
+          this.confetti.push({
+            x: Math.random() * this.width,
+            y: Math.random() * -this.height,
+            size: Math.random() * 10 + 8,
+            speedY: Math.random() * 1.4 + 0.8,
+            rotation: Math.random() * Math.PI * 2,
+            rotSpeed: (Math.random() - 0.5) * 0.04,
+            opacity: Math.random() * 0.65 + 0.3,
+            color: Math.random() > 0.6 ? '#ff758f' : (Math.random() > 0.4 ? '#ffd166' : '#ffb3c6'),
+            isPetal: Math.random() > 0.5
+          });
+        }
+      }
+
+      drawHeart(ctx, x, y, size, color) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.beginPath();
+        const topH = size * 0.3;
+        ctx.moveTo(0, topH);
+        ctx.bezierCurveTo(-size / 2, -topH, -size, size / 3, 0, size);
+        ctx.bezierCurveTo(size, size / 3, size / 2, -topH, 0, topH);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      animate() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+
+        // 1. Render twinkling stars
+        for (const star of this.stars) {
+          star.alpha += star.twinkleSpeed;
+          if (star.alpha > 0.95 || star.alpha < 0.2) {
+            star.twinkleSpeed = -star.twinkleSpeed;
+          }
+          this.ctx.beginPath();
+          this.ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          this.ctx.fillStyle = star.color;
+          this.ctx.globalAlpha = Math.max(0.1, Math.min(1, star.alpha));
+          this.ctx.fill();
+        }
+
+        // 2. Render floating translucent background hearts
+        for (let i = 0; i < this.hearts.length; i++) {
+          const h = this.hearts[i];
+          h.y -= h.speedY;
+          h.swingOffset += h.swingSpeed;
+          const currentX = h.x + Math.sin(h.swingOffset) * h.swingAmp;
+
+          this.ctx.globalAlpha = h.opacity;
+          this.drawHeart(this.ctx, currentX, h.y, h.size, `${h.color} ${h.opacity})`);
+
+          // Recycle when out of view
+          if (h.y < -40) {
+            this.hearts[i] = this.createHeart(false);
+          }
+        }
+
+        // 3. Render gentle confetti if activated
+        if (this.isConfettiActive) {
+          for (let i = 0; i < this.confetti.length; i++) {
+            const p = this.confetti[i];
+            p.y += p.speedY;
+            p.x += Math.sin(p.y * 0.015) * 0.7;
+            p.rotation += p.rotSpeed;
+
+            this.ctx.save();
+            this.ctx.translate(p.x, p.y);
+            this.ctx.rotate(p.rotation);
+            this.ctx.globalAlpha = p.opacity;
+
+            if (p.isPetal) {
+              this.ctx.beginPath();
+              this.ctx.ellipse(0, 0, p.size * 0.45, p.size * 0.8, 0, 0, Math.PI * 2);
+              this.ctx.fillStyle = p.color;
+              this.ctx.fill();
+            } else {
+              this.drawHeart(this.ctx, 0, 0, p.size * 0.8, p.color);
+            }
+
+            this.ctx.restore();
+
+            if (p.y > this.height + 25) {
+              p.y = -20;
+              p.x = Math.random() * this.width;
+            }
+          }
+        }
+
+        this.ctx.globalAlpha = 1.0;
+        requestAnimationFrame(() => this.animate());
+      }
+    }
+
+    /* ==========================================================================
+       SCENE 2 & 3: SLINGSHOT BOW & ARROW PHYSICS GAME
+       ========================================================================== */
+    class SlingshotGame {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        this.ctx = this.canvas.getContext('2d');
+        this.dpr = window.devicePixelRatio || 1;
+
+        // Viewport Dimensions
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+
+        // Bow & Floating Target Heart
+        this.bowPos = { x: 0, y: 0 };
+        this.heartPos = { x: 0, y: 0 };
+        this.heartBasePos = { x: 0, y: 0 };
+        this.heartRadius = 38;
+        this.heartPulse = 0;
+        this.heartWiggle = 0;
+
+        // Slingshot Pull State
+        this.isPulling = false;
+        this.pullPos = { x: 0, y: 0 };
+        this.maxPull = 120;
+        this.pullPower = 0;
+
+        // Flight & Particles
+        this.arrow = null;
+        this.isArrowFlying = false;
+        this.isSlowMo = false;
+        this.particles = [];
+        this.isHeartExploded = false;
+
+        // Game State & Assured Win After 3 Misses
+        this.missCount = 0;
+        this.hasWon = false;
+        this.time = 0;
+
+        this.init();
+      }
+
+      init() {
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        this.setupInputListeners();
+        this.resetPositions();
+        this.animate();
+      }
+
+      resize() {
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.dpr = window.devicePixelRatio || 1;
+
+        this.canvas.width = this.width * this.dpr;
+        this.canvas.height = this.height * this.dpr;
+        this.ctx.scale(this.dpr, this.dpr);
+
+        this.resetPositions();
+      }
+
+      resetPositions() {
+        const isMobile = this.width < 768;
+        // Bow sits at bottom-left
+        this.bowPos = {
+          x: isMobile ? this.width * 0.22 : this.width * 0.18,
+          y: isMobile ? this.height * 0.78 : this.height * 0.74
+        };
+
+        // Large beating heart floats at upper-right
+        this.heartBasePos = {
+          x: isMobile ? this.width * 0.78 : this.width * 0.78,
+          y: isMobile ? this.height * 0.25 : this.height * 0.28
+        };
+        this.heartPos = { ...this.heartBasePos };
+        this.heartRadius = isMobile ? 38 : 46;
+
+        this.pullPos = { ...this.bowPos };
+      }
+
+      setupInputListeners() {
+        const getCoord = (e) => {
+          const rect = this.canvas.getBoundingClientRect();
+          const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+          const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+          return {
+            x: clientX - rect.left,
+            y: clientY - rect.top
+          };
+        };
+
+        const handleStart = (e) => {
+          if (this.hasWon || this.isArrowFlying || this.isSlowMo) return;
+          const pos = getCoord(e);
+
+          // Forgiving touch target: near bow or lower-left quadrant
+          const distToBow = Math.hypot(pos.x - this.bowPos.x, pos.y - this.bowPos.y);
+          if (distToBow < 190 || (pos.x < this.width * 0.45 && pos.y > this.height * 0.55)) {
+            this.isPulling = true;
+            this.updatePull(pos);
+            sound.ensureContext();
+            if (e.cancelable) e.preventDefault();
+          }
+        };
+
+        const handleMove = (e) => {
+          if (!this.isPulling) return;
+          const pos = getCoord(e);
+          this.updatePull(pos);
+          if (e.cancelable) e.preventDefault();
+        };
+
+        const handleEnd = (e) => {
+          if (!this.isPulling) return;
+          this.isPulling = false;
+          this.launchArrow();
+          if (e.cancelable) e.preventDefault();
+        };
+
+        // Touch & Mouse
+        this.canvas.addEventListener('touchstart', handleStart, { passive: false });
+        window.addEventListener('touchmove', handleMove, { passive: false });
+        window.addEventListener('touchend', handleEnd, { passive: false });
+
+        this.canvas.addEventListener('mousedown', handleStart);
+        window.addEventListener('mousemove', handleMove);
+        window.addEventListener('mouseup', handleEnd);
+      }
+
+      updatePull(rawPos) {
+        let dx = rawPos.x - this.bowPos.x;
+        let dy = rawPos.y - this.bowPos.y;
+
+        const dist = Math.hypot(dx, dy);
+        const clampedDist = Math.min(dist, this.maxPull);
+
+        if (dist > 0) {
+          this.pullPos = {
+            x: this.bowPos.x + (dx / dist) * clampedDist,
+            y: this.bowPos.y + (dy / dist) * clampedDist
+          };
+        } else {
+          this.pullPos = { ...this.bowPos };
+        }
+
+        this.pullPower = clampedDist / this.maxPull;
+      }
+
+      launchArrow() {
+        const pullDx = this.bowPos.x - this.pullPos.x;
+        const pullDy = this.bowPos.y - this.pullPos.y;
+        const pullDist = Math.hypot(pullDx, pullDy);
+
+        if (pullDist < 16) {
+          this.pullPos = { ...this.bowPos };
+          return;
+        }
+
+        const angle = Math.atan2(pullDy, pullDx);
+        const speed = pullDist * 0.28 + 6.5;
+
+        this.arrow = {
+          x: this.bowPos.x,
+          y: this.bowPos.y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          angle: angle,
+          length: 56,
+          trail: []
+        };
+
+        this.isArrowFlying = true;
+        this.pullPos = { ...this.bowPos };
+
+        // Sound Effects
+        sound.playTwang();
+        sound.playWhoosh();
+      }
+
+      // SCENE 3: HEART BLAST
+      onArrowHit() {
+        // 1. Brief slow-motion / freeze moment (~220ms)
+        this.isSlowMo = true;
+        this.isArrowFlying = false;
+
+        setTimeout(() => {
+          this.isSlowMo = false;
+          this.triggerHeartExplosion();
+        }, 220);
+      }
+
+      triggerHeartExplosion() {
+        this.hasWon = true;
+        this.isHeartExploded = true;
+
+        // 1. Sparkly Chime Sound
+        sound.playHeartBlastChime();
+
+        // 2. Mobile Haptic Vibration
+        if (navigator.vibrate) {
+          try { navigator.vibrate([100, 50, 160]); } catch (e) {}
+        }
+
+        // 3. Screen Shake
+        const gameSection = document.getElementById('game-section');
+        gameSection.classList.add('screen-shake');
+        setTimeout(() => gameSection.classList.remove('screen-shake'), 450);
+
+        // 4. Soft White Flash
+        const flash = document.getElementById('flash-overlay');
+        flash.style.opacity = '0.85';
+        setTimeout(() => { flash.style.opacity = '0'; }, 380);
+
+        // 5. Canvas Particle System: Tiny hearts, rose petals, gold sparkles
+        const numParticles = 200;
+        for (let i = 0; i < numParticles; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 13 + 2;
+          const type = Math.random() > 0.4 ? 'heart' : (Math.random() > 0.5 ? 'petal' : 'sparkle');
+
+          this.particles.push({
+            x: this.heartPos.x,
+            y: this.heartPos.y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - (Math.random() * 3.5 + 1.2),
+            gravity: 0.18,
+            rotation: Math.random() * Math.PI * 2,
+            rotSpeed: (Math.random() - 0.5) * 0.16,
+            size: Math.random() * 15 + 8,
+            alpha: 1.0,
+            fadeSpeed: Math.random() * 0.012 + 0.007,
+            color: type === 'sparkle' ? '#ffd166' : (Math.random() > 0.5 ? '#ff758f' : '#ff4d6d'),
+            type: type
+          });
+        }
+
+        // 6. Confetti continues in background
+        window.ambientEngine.startConfetti();
+
+        // 7. Transition smoothly to Scene 4 (The Message Card)
+        setTimeout(() => {
+          this.revealMessageCard();
+        }, 900);
+      }
+
+      revealMessageCard() {
+        const messageSection = document.getElementById('message-section');
+        const loveCard = document.getElementById('love-card');
+
+        messageSection.scrollIntoView({ behavior: 'smooth' });
+
+        setTimeout(() => {
+          loveCard.classList.add('visible');
+          this.startTypewriter();
+        }, 600);
+      }
+
+      startTypewriter() {
+        const container = document.getElementById('typewriter-text');
+        const signature = document.getElementById('signature-text');
+        const scrollHint = document.getElementById('scroll-hint');
+
+        const fullText = CONFIG.letterLines.join('\n');
+        let index = 0;
+        container.innerHTML = '<span class="typewriter-cursor"></span>';
+
+        const typeInterval = setInterval(() => {
+          if (index < fullText.length) {
+            const currentContent = fullText.substring(0, index + 1);
+            container.innerHTML = currentContent.replace(/\n/g, '<br>') + '<span class="typewriter-cursor"></span>';
+            index++;
+          } else {
+            clearInterval(typeInterval);
+            setTimeout(() => {
+              const cursor = container.querySelector('.typewriter-cursor');
+              if (cursor) cursor.remove();
+              signature.classList.add('visible');
+              scrollHint.classList.add('visible');
+            }, 600);
+          }
+        }, 36);
+      }
+
+      triggerMiss() {
+        this.isArrowFlying = false;
+        this.missCount++;
+
+        // Heart playfully wiggles
+        this.heartWiggle = 1.0;
+
+        // Feedback toast
+        const toast = document.getElementById('miss-toast');
+        if (this.missCount >= 3) {
+          toast.innerHTML = '<span>💖</span> Love is magnetic! My heart is coming to you';
+        } else {
+          toast.innerHTML = '<span>😘</span> Almost! Try again';
+        }
+
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 2000);
+
+        this.arrow = null;
+      }
+
+      drawHeartShape(ctx, x, y, size, fillStyle, strokeStyle = null) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.beginPath();
+        const topH = size * 0.32;
+        ctx.moveTo(0, topH);
+        ctx.bezierCurveTo(-size * 0.55, -topH * 1.1, -size * 1.05, size * 0.35, 0, size * 1.05);
+        ctx.bezierCurveTo(size * 1.05, size * 0.35, size * 0.55, -topH * 1.1, 0, topH);
+        ctx.closePath();
+
+        ctx.fillStyle = fillStyle;
+        ctx.fill();
+
+        if (strokeStyle) {
+          ctx.strokeStyle = strokeStyle;
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      drawBowAndString() {
+        const ctx = this.ctx;
+        const bX = this.bowPos.x;
+        const bY = this.bowPos.y;
+
+        const aimAngle = Math.atan2(this.heartPos.y - bY, this.heartPos.x - bX);
+        const normalAngle = aimAngle + Math.PI / 2;
+
+        const bowArmLength = 52;
+        const tip1 = {
+          x: bX + Math.cos(normalAngle) * bowArmLength,
+          y: bY + Math.sin(normalAngle) * bowArmLength
+        };
+        const tip2 = {
+          x: bX - Math.cos(normalAngle) * bowArmLength,
+          y: bY - Math.sin(normalAngle) * bowArmLength
+        };
+
+        const notchX = this.isPulling ? this.pullPos.x : bX - Math.cos(aimAngle) * 6;
+        const notchY = this.isPulling ? this.pullPos.y : bY - Math.sin(aimAngle) * 6;
+
+        // Draw Bowstring
+        ctx.beginPath();
+        ctx.moveTo(tip1.x, tip1.y);
+        ctx.lineTo(notchX, notchY);
+        ctx.lineTo(tip2.x, tip2.y);
+        ctx.strokeStyle = 'rgba(255, 238, 190, 0.9)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Draw Bow Arch with Dynamic Flexing
+        const flexOffset = this.isPulling ? this.pullPower * 10 : 0;
+        ctx.beginPath();
+        ctx.moveTo(tip1.x, tip1.y);
+        ctx.quadraticCurveTo(
+          bX + Math.cos(aimAngle) * (24 - flexOffset),
+          bY + Math.sin(aimAngle) * (24 - flexOffset),
+          tip2.x,
+          tip2.y
+        );
+        ctx.strokeStyle = '#ffd166';
+        ctx.lineWidth = 5;
+        ctx.lineCap = 'round';
+        ctx.shadowColor = 'rgba(255, 209, 102, 0.7)';
+        ctx.shadowBlur = 14;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // Grip gem
+        ctx.beginPath();
+        ctx.arc(bX + Math.cos(aimAngle) * 11, bY + Math.sin(aimAngle) * 11, 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#ff4d6d';
+        ctx.fill();
+
+        // Resting / Aiming Arrow
+        if (!this.isArrowFlying) {
+          const arrowAngle = this.isPulling
+            ? Math.atan2(bY - this.pullPos.y, bX - this.pullPos.x)
+            : aimAngle;
+
+          this.drawArrow(notchX, notchY, arrowAngle, 56);
+
+          // Sparkling dotted trajectory line
+          if (this.isPulling && this.pullPower > 0.12) {
+            this.drawTrajectory(notchX, notchY, arrowAngle);
+          }
+        }
+      }
+
+      drawArrow(x, y, angle, length) {
+        const ctx = this.ctx;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+
+        // Golden Shaft
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(length, 0);
+        ctx.strokeStyle = '#ffd166';
+        ctx.lineWidth = 3.2;
+        ctx.shadowColor = '#ffd166';
+        ctx.shadowBlur = 6;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // Ruby Heart Tip
+        this.drawHeartShape(ctx, length + 2, -5, 10, '#ff4d6d', '#ffffff');
+
+        // Fletching Feathers
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(-9, -5.5);
+        ctx.moveTo(0, 0);
+        ctx.lineTo(-9, 5.5);
+        ctx.moveTo(7, 0);
+        ctx.lineTo(-2, -5.5);
+        ctx.moveTo(7, 0);
+        ctx.lineTo(-2, 5.5);
+        ctx.strokeStyle = '#ffb3c6';
+        ctx.lineWidth = 2.2;
+        ctx.stroke();
+
+        ctx.restore();
+      }
+
+      drawTrajectory(startX, startY, angle) {
+        const ctx = this.ctx;
+        const pullDx = this.bowPos.x - this.pullPos.x;
+        const pullDy = this.bowPos.y - this.pullPos.y;
+        const pullDist = Math.hypot(pullDx, pullDy);
+        const speed = pullDist * 0.28 + 6.5;
+
+        let simX = startX;
+        let simY = startY;
+        let simVx = Math.cos(angle) * speed;
+        let simVy = Math.sin(angle) * speed;
+        const gravity = 0.24;
+
+        ctx.save();
+        for (let i = 0; i < 28; i++) {
+          simX += simVx * 1.5;
+          simY += simVy * 1.5;
+          simVy += gravity * 1.5;
+
+          const alpha = 1 - (i / 28);
+          ctx.beginPath();
+          ctx.arc(simX, simY, 2.5 + Math.sin(this.time * 0.12 + i) * 1.2, 0, Math.PI * 2);
+          ctx.fillStyle = i % 2 === 0 ? `rgba(255, 209, 102, ${alpha * 0.9})` : `rgba(255, 117, 143, ${alpha * 0.9})`;
+          ctx.shadowColor = '#ffd166';
+          ctx.shadowBlur = 8;
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+
+      drawTargetHeart() {
+        if (this.isHeartExploded) return;
+        const ctx = this.ctx;
+
+        this.time += 1;
+        const floatOffsetY = Math.sin(this.time * 0.035) * 15;
+        const floatOffsetX = Math.cos(this.time * 0.025) * 9;
+
+        // If she missed 3+ times, gently glide heart closer to the center path
+        if (this.missCount >= 3) {
+          const targetX = this.width * 0.65;
+          const targetY = this.height * 0.38;
+          this.heartBasePos.x += (targetX - this.heartBasePos.x) * 0.015;
+          this.heartBasePos.y += (targetY - this.heartBasePos.y) * 0.015;
+        }
+
+        this.heartPos.x = this.heartBasePos.x + floatOffsetX;
+        this.heartPos.y = this.heartBasePos.y + floatOffsetY;
+
+        // Heartbeat pulse
+        this.heartPulse = Math.sin(this.time * 0.065) * 0.09 + 1.0;
+
+        let wiggleRotation = 0;
+        if (this.heartWiggle > 0) {
+          wiggleRotation = Math.sin(this.heartWiggle * Math.PI * 6) * 0.25;
+          this.heartWiggle -= 0.035;
+        }
+
+        ctx.save();
+        ctx.translate(this.heartPos.x, this.heartPos.y);
+        ctx.rotate(wiggleRotation);
+        ctx.scale(this.heartPulse, this.heartPulse);
+
+        // Radiant glow
+        const gradient = ctx.createRadialGradient(0, 0, this.heartRadius * 0.4, 0, 0, this.heartRadius * 1.7);
+        gradient.addColorStop(0, 'rgba(255, 77, 109, 0.5)');
+        gradient.addColorStop(0.6, 'rgba(201, 24, 74, 0.22)');
+        gradient.addColorStop(1, 'rgba(201, 24, 74, 0)');
+
+        ctx.beginPath();
+        ctx.arc(0, 0, this.heartRadius * 1.7, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        // Main Heart Body
+        this.drawHeartShape(
+          ctx,
+          0,
+          -this.heartRadius * 0.65,
+          this.heartRadius * 1.35,
+          '#ff4d6d',
+          'rgba(255, 240, 245, 0.9)'
+        );
+
+        // Highlight sheen
+        ctx.beginPath();
+        ctx.ellipse(-this.heartRadius * 0.35, -this.heartRadius * 0.2, this.heartRadius * 0.16, this.heartRadius * 0.32, -0.4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.42)';
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      updateArrow() {
+        if (!this.arrow) return;
+
+        if (this.isSlowMo) {
+          // Render frozen in-place during slow-mo impact
+          this.drawArrow(this.arrow.x, this.arrow.y, this.arrow.angle, this.arrow.length);
+          return;
+        }
+
+        if (!this.isArrowFlying) return;
+
+        this.arrow.trail.push({ x: this.arrow.x, y: this.arrow.y, alpha: 1.0 });
+        if (this.arrow.trail.length > 18) this.arrow.trail.shift();
+
+        // Physics
+        const gravity = 0.24;
+        this.arrow.x += this.arrow.vx;
+        this.arrow.y += this.arrow.vy;
+        this.arrow.vy += gravity;
+        this.arrow.angle = Math.atan2(this.arrow.vy, this.arrow.vx);
+
+        // Cupid's Magnetic Assist after 3 misses
+        if (this.missCount >= 3) {
+          const dx = this.heartPos.x - this.arrow.x;
+          const dy = this.heartPos.y - this.arrow.y;
+          const distToHeart = Math.hypot(dx, dy);
+
+          if (distToHeart < 320) {
+            this.arrow.vx += (dx / distToHeart) * 1.1;
+            this.arrow.vy += (dy / distToHeart) * 1.1;
+          }
+        }
+
+        // Draw glittering trail
+        for (const t of this.arrow.trail) {
+          t.alpha -= 0.055;
+          this.ctx.beginPath();
+          this.ctx.arc(t.x, t.y, 2.5, 0, Math.PI * 2);
+          this.ctx.fillStyle = `rgba(255, 209, 102, ${Math.max(0, t.alpha)})`;
+          this.ctx.shadowColor = '#ffd166';
+          this.ctx.shadowBlur = 6;
+          this.ctx.fill();
+        }
+
+        const tipX = this.arrow.x + Math.cos(this.arrow.angle) * this.arrow.length;
+        const tipY = this.arrow.y + Math.sin(this.arrow.angle) * this.arrow.length;
+
+        this.drawArrow(this.arrow.x, this.arrow.y, this.arrow.angle, this.arrow.length);
+
+        // Collision Check
+        const distFromHeart = Math.hypot(tipX - this.heartPos.x, tipY - this.heartPos.y);
+        if (distFromHeart < this.heartRadius * 1.25) {
+          this.onArrowHit();
+          return;
+        }
+
+        // Miss check
+        if (this.arrow.x > this.width + 100 || this.arrow.y > this.height + 100 || this.arrow.x < -100) {
+          this.triggerMiss();
+        }
+      }
+
+      updateParticles() {
+        for (let i = this.particles.length - 1; i >= 0; i--) {
+          const p = this.particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.rotation += p.rotSpeed;
+          p.alpha -= p.fadeSpeed;
+
+          if (p.alpha <= 0) {
+            this.particles.splice(i, 1);
+            continue;
+          }
+
+          this.ctx.save();
+          this.ctx.translate(p.x, p.y);
+          this.ctx.rotate(p.rotation);
+          this.ctx.globalAlpha = Math.max(0, p.alpha);
+
+          if (p.type === 'heart') {
+            this.drawHeartShape(this.ctx, 0, -p.size * 0.4, p.size * 0.8, p.color);
+          } else if (p.type === 'petal') {
+            this.ctx.beginPath();
+            this.ctx.ellipse(0, 0, p.size * 0.4, p.size * 0.8, 0, 0, Math.PI * 2);
+            this.ctx.fillStyle = p.color;
+            this.ctx.fill();
+          } else {
+            this.ctx.beginPath();
+            this.ctx.arc(0, 0, p.size * 0.35, 0, Math.PI * 2);
+            this.ctx.fillStyle = p.color;
+            this.ctx.shadowColor = '#ffd166';
+            this.ctx.shadowBlur = 8;
+            this.ctx.fill();
+          }
+
+          this.ctx.restore();
+        }
+      }
+
+      animate() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+
+        this.drawTargetHeart();
+        this.drawBowAndString();
+        this.updateArrow();
+        this.updateParticles();
+
+        requestAnimationFrame(() => this.animate());
+      }
+
+      replay() {
+        this.hasWon = false;
+        this.isHeartExploded = false;
+        this.isArrowFlying = false;
+        this.isSlowMo = false;
+        this.arrow = null;
+        this.particles = [];
+        this.missCount = 0;
+        this.resetPositions();
+      }
+    }
+
+    /* ==========================================================================
+       SCENE 5: SURPRISE INTERACTIONS (CARDS, LUCKY CHARM, HUG EMOJIS)
+       ========================================================================== */
+    class SurprisesController {
+      constructor(gameEngine) {
+        this.gameEngine = gameEngine;
+        this.currentCardIndex = 0;
+        this.luckyCount = 0;
+        this.hugCount = 0;
+
+        this.init();
+      }
+
+      init() {
+        this.setupCardDeck();
+        this.setupLuckyCharm();
+        this.setupHugButton();
+        this.setupReplayButton();
+      }
+
+      // 1. REASONS CARD DECK
+      setupCardDeck() {
+        const cardElement = document.getElementById('flip-card-element');
+        const prevBtn = document.getElementById('deck-prev-btn');
+        const nextBtn = document.getElementById('deck-next-btn');
+        const dotsContainer = document.getElementById('deck-dots-container');
+
+        dotsContainer.innerHTML = '';
+        CONFIG.reasons.forEach((_, idx) => {
+          const dot = document.createElement('div');
+          dot.className = `deck-dot ${idx === 0 ? 'active' : ''}`;
+          dotsContainer.appendChild(dot);
+        });
+
+        // Tap to flip
+        cardElement.addEventListener('click', () => {
+          cardElement.classList.toggle('flipped');
+          sound.playCharmPop();
+        });
+
+        const updateCardView = (newIndex) => {
+          this.currentCardIndex = (newIndex + CONFIG.reasons.length) % CONFIG.reasons.length;
+
+          cardElement.classList.remove('flipped');
+
+          setTimeout(() => {
+            document.getElementById('deck-front-title').textContent = `Reason #${this.currentCardIndex + 1}`;
+            document.getElementById('deck-card-num').textContent = `REASON ${this.currentCardIndex + 1} OF ${CONFIG.reasons.length}`;
+            document.getElementById('deck-reason-content').textContent = `"${CONFIG.reasons[this.currentCardIndex]}"`;
+
+            const dots = dotsContainer.querySelectorAll('.deck-dot');
+            dots.forEach((d, i) => {
+              d.classList.toggle('active', i === this.currentCardIndex);
+            });
+          }, 200);
+
+          sound.playCharmPop();
+        };
+
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateCardView(this.currentCardIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updateCardView(this.currentCardIndex + 1);
+        });
+
+        // Swipe Gestures
+        let touchStartX = 0;
+        cardElement.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        cardElement.addEventListener('touchend', (e) => {
+          const touchEndX = e.changedTouches[0].clientX;
+          const diffX = touchEndX - touchStartX;
+          if (Math.abs(diffX) > 45) {
+            if (diffX < 0) {
+              updateCardView(this.currentCardIndex + 1);
+            } else {
+              updateCardView(this.currentCardIndex - 1);
+            }
+          }
+        }, { passive: true });
+      }
+
+      // 2. LUCKY CHARM GENERATOR
+      setupLuckyCharm() {
+        const charmBtn = document.getElementById('charm-trigger-btn');
+        const textContent = document.getElementById('lucky-text-content');
+        const counterText = document.getElementById('lucky-counter-text');
+        const displayBox = document.getElementById('lucky-display-box');
+
+        charmBtn.addEventListener('click', () => {
+          this.luckyCount++;
+          sound.playCharmPop();
+
+          if (navigator.vibrate) {
+            try { navigator.vibrate(40); } catch (e) {}
+          }
+
+          const randomBlessing = CONFIG.blessings[Math.floor(Math.random() * CONFIG.blessings.length)];
+
+          displayBox.style.transform = 'scale(0.96)';
+          textContent.style.opacity = '0';
+
+          setTimeout(() => {
+            textContent.textContent = `"${randomBlessing}"`;
+            counterText.textContent = `Tapped ${this.luckyCount} ${this.luckyCount === 1 ? 'time' : 'times'} • Unlimited luck inside ✨`;
+            displayBox.style.transform = 'scale(1)';
+            textContent.style.opacity = '1';
+          }, 150);
+        });
+      }
+
+      // 3. SEND ME A HUG BUTTON
+      setupHugButton() {
+        const hugBtn = document.getElementById('hug-btn');
+        const feedbackText = document.getElementById('hug-feedback-text');
+        const counterPill = document.getElementById('hug-counter-pill');
+        const container = document.getElementById('hug-emoji-container');
+
+        hugBtn.addEventListener('click', () => {
+          this.hugCount++;
+          sound.playCharmPop();
+
+          if (navigator.vibrate) {
+            try { navigator.vibrate([45, 45, 65]); } catch (e) {}
+          }
+
+          // Pulse squish
+          hugBtn.style.transform = 'scale(0.85)';
+          setTimeout(() => { hugBtn.style.transform = 'scale(1.15)'; }, 100);
+          setTimeout(() => { hugBtn.style.transform = ''; }, 260);
+
+          const response = CONFIG.hugResponses[(this.hugCount - 1) % CONFIG.hugResponses.length];
+          feedbackText.textContent = response;
+          counterPill.textContent = `Hugs sent: ${this.hugCount} 💕`;
+
+          const rect = hugBtn.getBoundingClientRect();
+          const originX = rect.left + rect.width / 2;
+          const originY = rect.top + rect.height / 2;
+
+          const emojiTypes = ['🤗', '💕', '✨', '💖', '🥰', '🌸'];
+          const spawnCount = 22;
+
+          for (let i = 0; i < spawnCount; i++) {
+            const emojiEl = document.createElement('div');
+            emojiEl.className = 'floating-hug-emoji';
+            emojiEl.textContent = emojiTypes[Math.floor(Math.random() * emojiTypes.length)];
+
+            const spreadX = (Math.random() - 0.5) * 170;
+            emojiEl.style.left = `${originX + spreadX}px`;
+            emojiEl.style.top = `${originY}px`;
+            emojiEl.style.animationDelay = `${Math.random() * 0.28}s`;
+            emojiEl.style.fontSize = `${Math.random() * 16 + 24}px`;
+
+            container.appendChild(emojiEl);
+
+            setTimeout(() => {
+              emojiEl.remove();
+            }, 3000);
+          }
+        });
+      }
+
+      // 4. REPLAY BUTTON
+      setupReplayButton() {
+        const replayBtn = document.getElementById('replay-btn');
+        replayBtn.addEventListener('click', () => {
+          sound.playCharmPop();
+          this.gameEngine.replay();
+          document.getElementById('game-section').scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    }
+
+    /* ==========================================================================
+       PAGE INITIALIZATION & EVENT HOOKS
+       ========================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      // 1. Ambient Background Engine
+      window.ambientEngine = new AmbientEngine('ambient-canvas');
+
+      // 2. Slingshot Game Engine
+      const gameEngine = new SlingshotGame('game-canvas');
+
+      // 3. Surprises Controller
+      new SurprisesController(gameEngine);
+
+      // 4. Intro Overlay Dismissal
+      const startBtn = document.getElementById('start-btn');
+      const introScene = document.getElementById('intro-scene');
+
+      startBtn.addEventListener('click', () => {
+        sound.init();
+        sound.ensureContext();
+        sound.playCharmPop();
+        introScene.classList.add('hidden');
+      });
+
+      // 5. Sound Mute/Unmute Toggle
+      const audioBtn = document.getElementById('audio-toggle-btn');
+      const audioIcon = document.getElementById('audio-icon');
+      const audioLabel = document.getElementById('audio-label');
+
+      audioBtn.addEventListener('click', () => {
+        sound.ensureContext();
+        const isAudible = sound.toggleMute();
+        audioIcon.textContent = isAudible ? '🔊' : '🔇';
+        audioLabel.textContent = isAudible ? 'Sound On' : 'Muted';
+      });
+
+      // 6. Scroll Hint Link
+      const scrollHint = document.getElementById('scroll-hint');
+      scrollHint.addEventListener('click', () => {
+        const firstSurprise = document.querySelector('.card-deck-section');
+        if (firstSurprise) firstSurprise.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
